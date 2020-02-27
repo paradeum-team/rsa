@@ -78,6 +78,25 @@ func base64ToHex(base string) string {
 	return hex.EncodeToString(p)
 }
 
+func Hex2Base64(hexComplainText string ) string {
+	body,err:=HexDecode(hexComplainText)
+	if err !=nil{
+		fmt.Printf("step 1 error ...%v \n",err)
+	}
+	base64Content:=base64.StdEncoding.EncodeToString(body)
+
+	return base64Content
+
+}
+func HexDecode(encodeSrc string) ([]byte, error) {
+	b, err := hex.DecodeString(encodeSrc)
+	if err != nil {
+		fmt.Printf("hex decode error %v \n", err.Error())
+	}
+
+	return b, err
+}
+
 //base64
 
 func Base64Encode(content [] byte) string {
@@ -116,14 +135,7 @@ func HexEncodeWithByte(src []byte) string{
 	return hex.EncodeToString(src)
 }
 
-func HexDecode(encodeSrc string) ([]byte, error) {
-	b, err := hex.DecodeString(encodeSrc)
-	if err != nil {
-		fmt.Printf("hex decode error %v \n", err.Error())
-	}
 
-	return b, err
-}
 
 func PrivateKey2Custom() {
 	//base :="3082025c02010002818100badd8cd087c0f52f71581bdb51c5d8f347905822443ecf106152f1831a57f7f6ee019f8310609f46bd9e898f3e1fa88991059432e12c1b18be2b470c0b1e5db613defd6be1f5dae0b54b38ee38273740fae066bf4d93c9229c962c6de68609c974cb4720ef5cb0d05416571e23ccf6e546abadf51c43c71329ea81456b56a6c702030100010281800f5c24b60362a604c75151c0de60dfeb67678307160affa43e0bbe546376f5a7f37a68ad324c6eeb36acf06bb8d48b5afb73b4f1d5b67567bc41fc6e0dffe9fde8814940063075a31a5a334486634e00d9071cc6787b0e8b2e4a391abe6585b7ec06cd138695df2cbae3839aad4e96adff6042baaafb4dc12c2e7c41ba05a539024100dacfb42d930b9bf46c1a821d8d01e248f6264726e0b0a47dce8f47b50e2463d3c16507b735a0e91099f4c9626e2827b61e08872c9ba6378f58dbed67ddd1eebb024100da9fe8181470b178aa73f9bd2747e8c12119762706b0b8a9b51b36cb365defa51dabdcbdff6ddb1bf6c1de6a8be83224f05bf5757edbc77914695ef6adb8756502404b6b3e025b65abfa826c5c9ecce472578da841ec0f94330e3ded3add1823c8d8cb1704a2cc744b00f2dfe1adf0a41c93f424225b68c6d0edb2c6133d32c2d2530241008b7bdc63889f01cbbfccb0b8ab1828fb17381c76f7c0c6809828ddc3b75325738e43b9598b5f369d57c90733a941a2c48889d3487c80927ac0b81dbb7ac8a63502406f7a71286588157911fa6fe71045a69338621594128ccae6c6af9a5bedb951060e931d53d1c7c7828e3d02c1c7f3c1a14b1785c2a8da2996c94b1c195f56f897"

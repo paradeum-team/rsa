@@ -123,6 +123,9 @@ func RsaDecrypteWithprivate(hexCipertext string) string {
 		fmt.Println("hex decode mypassen  fail ... ")
 	}
 
+	fmt.Println("hex.pass=")
+	fmt.Println(string(mypassen))
+
 	privateKey,err:=utils.GetFullPrivateKey()
 	if err !=nil{
 		fmt.Println("get private key fail  ... ")
